@@ -11,7 +11,8 @@
     <title>SpringMVC</title>
   </head>
   <body>
-    <a href="hello">你好</a>
-    <a href="error">错误</a>
+    <a href="index/hello">你好</a>
+    <a href="index/error">错误</a>
+    <a href="index/doSomething">do</a>
   </body>
 </html>

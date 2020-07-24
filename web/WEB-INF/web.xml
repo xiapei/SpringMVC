@@ -18,6 +18,18 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
+<!--        /：拦截所有请求，不拦截jsp页面，*.jsp请求
+            /*：拦截所有请求，拦截jsp页面，.jsp请求
+
+            处理*.jsp是tomcat做的事，所有项目的web.xml继承于tomcat的web.xml
+
+            tomcat服务器的web.xml中有一个DefaultServlet是url-pattern=/，DefaultServlet是tomcat中处理静态资源的，除过jsp和servlet，剩下的都是静态资源：.html是静态资源
+            我们的配置中，前端控制器url-pattern=/，把tomcat服务器的DefaultServlet禁用了，就无法处理静态资源
+
+            JspServlet没有被继承，没有拦截.jsp页面
+
+            写/也是为了迎合REST风格的URL地址
+-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -68,4 +68,9 @@ public class IndexController {
         Book book = new Book("西游记","吴承恩",99.99,10);
         map.put("book",book);
     }
+
+    @RequestMapping("handlePlus")
+    public String handlePlus(){
+        return "go:/handlePlus.jsp";
+    }
 }

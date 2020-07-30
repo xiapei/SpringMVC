@@ -22,5 +22,6 @@
       <label>库存：</label><input name="stock" type="number"/><br>
       <input type="submit" />
     </form>
+    <a href="index/handlePlus">自定义解析器</a>
   </body>
 </html>

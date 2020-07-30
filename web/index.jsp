@@ -11,8 +11,16 @@
     <title>SpringMVC</title>
   </head>
   <body>
-    <a href="index/hello">你好</a>
-    <a href="index/error">错误</a>
-    <a href="index/doSomething">do</a>
+    <a href="index/hello">你好</a><br>
+    <a href="index/error">错误</a><br>
+    <a href="index/doSomething">do</a><br>
+    <a href="index/helloPage">helloPage</a><br>
+    <form action="index/updateBook">
+      <label>书名：</label><input name="bookName" /><br>
+      <label>作者：</label><input name="author" /><br>
+      <label>价格：</label><input name="price" type="number"/><br>
+      <label>库存：</label><input name="stock" type="number"/><br>
+      <input type="submit" />
+    </form>
   </body>
 </html>

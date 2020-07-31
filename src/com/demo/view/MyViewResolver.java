@@ -3,6 +3,7 @@ package com.demo.view;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 import java.util.Locale;
 
@@ -24,6 +25,7 @@ public class MyViewResolver implements ViewResolver, Ordered {
     @Override
     public View resolveViewName(String s, Locale locale) throws Exception {
         if(s.startsWith(PREFIX)){
+//            return new InternalResourceView(s.substring(3));
             return new MyView();
         }else {
             return null;

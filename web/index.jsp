@@ -11,7 +11,9 @@
     <title>SpringMVC</title>
   </head>
   <body>
-    <a href="index/hello">你好</a><br>
+    <form action="index/hello" method="post">
+      <input type="submit" value="你好呀" />
+    </form>
     <a href="index/error">错误</a><br>
     <a href="index/doSomething">do</a><br>
     <a href="index/helloPage">helloPage</a><br>

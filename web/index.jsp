@@ -10,12 +10,13 @@
   <head>
     <title>SpringMVC</title>
   </head>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.3.1.min.js"></script>
   <body>
     <form action="index/hello" method="post">
       <input type="submit" value="你好呀" />
     </form>
     <a href="index/error">错误</a><br>
-    <a href="index/doSomething">do</a><br>
+    <a id="doSomething">do</a><br>
     <a href="index/helloPage">helloPage</a><br>
     <form action="index/updateBook">
       <label>书名：</label><input name="bookName" /><br>
@@ -26,4 +27,15 @@
     </form>
     <a href="index/handlePlus">自定义解析器</a>
   </body>
+  <script>
+    $("#doSomething").click(function () {
+      $.ajax({
+        url:"index/doSomething",
+        type:"GET",
+        success: data => {
+          console.log(data);
+        }
+      })
+    })
+  </script>
 </html>

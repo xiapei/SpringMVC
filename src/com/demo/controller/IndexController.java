@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -48,8 +49,8 @@ public class IndexController {
 
     @RequestMapping("/doSomething")
     @ResponseBody
-    public String doSomething(){
-        return indexService.doSomething();
+    public Book doSomething(){
+        return new Book("西游记","吴承恩",99.99,10);
     }
 
     @RequestMapping("/updateBook")

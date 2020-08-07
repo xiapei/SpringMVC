@@ -13,6 +13,9 @@
 <!--    扫描所有组件-->
     <context:component-scan base-package="com.*"/>
 
+<!--    使用配置文件-->
+    <context:property-placeholder location="conf/application.properties"/>
+
 <!--    视图解析器，简化方法的返回值，返回值就是作为页面地址-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
@@ -27,6 +30,8 @@
 
 <!--    容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL -->
     <mvc:default-servlet-handler/>
+<!--    简单的跳转页面，且不需要SpringMVC管理-->
+    <mvc:view-controller path="/fileUpload" view-name="/upload" />
 
 <!--    日期处理器-->
     <bean id="conversionService"
@@ -38,5 +43,9 @@
         </property>
     </bean>
 
+<!--    文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
 
 </beans>

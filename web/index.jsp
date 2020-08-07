@@ -26,6 +26,7 @@
       <input type="submit" />
     </form>
     <a href="index/handlePlus">自定义解析器</a>
+    <a href="${pageContext.request.contextPath}/fileUpload">文件上传</a>
   </body>
   <script>
     $("#doSomething").click(function () {

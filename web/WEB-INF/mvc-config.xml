@@ -48,4 +48,24 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
+<!--    拦截器 正常执行流程：拦截器preHandle===目标方法===拦截器postHandle===页面===拦截器afterCompletion-->
+    <mvc:interceptors>
+<!--        所有请求都会拦截-->
+<!--        <bean class="com.demo.interceptor.MyInterceptor"/>-->
+
+<!--        拦截特定请求-->
+        <mvc:interceptor>
+            <mvc:mapping path="/interReq"/>
+            <bean class="com.demo.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+<!--    国际化-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="language"/>
+    </bean>
+
+<!--    配置SessionLocaleResolver用于将Locale对象存储于Session中供后续使用-->
+<!--    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>-->
+
 </beans>

@@ -1,0 +1,18 @@
+SpringMVC执行的流程
+
+1、所以请求进来之后，前端控制器（DispatcherServlet）收到请求，调用doDispatch进行处理
+2、根据HandlerMapping中保存的请求映射信息找到 处理当前请求的处理器执行链（包含拦截器）
+3、根据当前处理器找到HandlerAdapter（适配器）
+4、执行拦截器的praHandle
+5、适配器执行目标方法，并返回ModelAndView
+    1）ModelAttribute注解标注的方法提前执行
+    2）确定目标方法的参数：有注解和没注解
+        1.是否Model和Map以及其他类型（基本类型）
+        2.自定义类型：先从隐含模型中拿-->没有的话看是否为SessionAttribute标注的属性，有就拿，没有的话抛异常-->都不是的话就用反射创建对象
+6、执行拦截器的postHandle
+7、处理ModelAndView，页面渲染流程
+    1）如果有异常就用异常解析器处理异常；处理完之后还是返回ModelAndView
+    2）调用render进行页面渲染
+        1.视图解析器根据视图名得到视图对象视图
+        2.视图对象调用render方法
+    3）执行拦截器的afterCompletion方法

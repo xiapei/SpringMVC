@@ -14,7 +14,7 @@
     <context:component-scan base-package="com.*"/>
 
 <!--    使用配置文件-->
-    <context:property-placeholder location="conf/application.properties"/>
+    <context:property-placeholder location="classpath:conf/application.properties"/>
 
 <!--    视图解析器，简化方法的返回值，返回值就是作为页面地址-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -58,14 +58,22 @@
             <mvc:mapping path="/interReq"/>
             <bean class="com.demo.interceptor.MyInterceptor"/>
         </mvc:interceptor>
+
+<!--    写一个拦截器，从session中获取区域信息，并把每一个页面都进行国际化；配合localeResolver==SessionLocaleResolver使用-->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+
     </mvc:interceptors>
 
 <!--    国际化-->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="language"/>
+        <property name="basename" value="conf.language"/>
+        <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
 <!--    配置SessionLocaleResolver用于将Locale对象存储于Session中供后续使用-->
-<!--    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>-->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+<!--    使用自己的编写的区域信息-->
+<!--    <bean id="localeResolver" class="com.demo.interceptor.MyLocaleResolver"/>-->
+
 
 </beans>

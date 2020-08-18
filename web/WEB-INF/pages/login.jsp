@@ -19,9 +19,9 @@
     <fmt:message key="password"/>：<input name="password" type="password"/><br/>
     <input type="submit" value="<fmt:message key="loginBtn"/>">
 </form>
-Language:
+<fmt:message key="language"/>:
 <a href="?locale=zh_CN">中文</a>
-<a href="?locale=en_US">英文</a><br/>
-当前语言: ${pageContext.response.locale}
+<a href="?locale=en_US">English</a><br/>
+<fmt:message key="nowLocale"/>:: ${pageContext.response.locale}
 </body>
 </html>

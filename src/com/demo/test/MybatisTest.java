@@ -3,16 +3,11 @@ package com.demo.test;
 import com.demo.bean.UserInfo;
 import com.demo.mapper.MybatisMapper;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.mapping.Environment;
-import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.junit.jupiter.api.Test;
 
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -25,7 +20,7 @@ public class MybatisTest {
 
     private final SqlSessionFactory sqlSessionFactory = getSqlSession();
 
-    public SqlSessionFactory getSqlSession(){
+    public SqlSessionFactory getSqlSession() {
         String resource = "conf/mybatis-config.xml";
         InputStream inputStream = null;
         try {
@@ -37,7 +32,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void mybatisTest(){
+    public void mybatisTest() {
         //try()...catch括号内的资源可以在执行完语句之后自动关闭
         try (SqlSession session = sqlSessionFactory.openSession()) {
             MybatisMapper mapper = session.getMapper(MybatisMapper.class);

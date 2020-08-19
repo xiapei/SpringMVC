@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author xiapp
@@ -33,11 +35,13 @@ public class MybatisTest {
 
     @Test
     public void mybatisTest() {
-        //try()...catch括号内的资源可以在执行完语句之后自动关闭
+        //try(){}...catch{}括号内的资源可以在执行完语句之后自动关闭
         try (SqlSession session = sqlSessionFactory.openSession()) {
             MybatisMapper mapper = session.getMapper(MybatisMapper.class);
-            UserInfo openId = mapper.selectUserNameByUserId(42485);
-            System.out.println(openId);
+//            Map<String,Object> openId = mapper.selectUserInfoById(42485);
+//            List<UserInfo> allUser = mapper.getAllUser();
+            Map<Integer, UserInfo> allUserReturnMap = mapper.getAllUserReturnMap();
+            System.out.println(allUserReturnMap);
         }
     }
 }

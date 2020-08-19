@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.demo.mapper.MybatisMapper">
-    <select id="selectUserNameByUserId" resultType="com.demo.bean.UserInfo">
+    <!-- 赋值方式
+        #{属性名}：是参数预编译的方式，参数的位置都是用?代替，参数是预编译设置进去的；安全
+        ${属性名}：不是预编译参数，直接与sql语句拼串；
+        只有where参数位置支持预编译，表名可以用${tableName}取
+-->
+    <select id="selectUserById" resultType="com.demo.bean.UserInfo">
         select openId,userName from user_userinfo where userid = #{id}
+    </select>
+
+    <select id="selectUserInfoById" resultType="Map">
+        select openId,userName from user_userinfo where userid = #{id}
+    </select>
+
+<!--    自动包装为List-->
+    <select id="getAllUser" resultType="com.demo.bean.UserInfo">
+        select openId,userName from user_userinfo
+    </select>
+
+    <select id="getAllUserReturnMap" resultType="com.demo.bean.UserInfo">
+        select userId,openId,userName from user_userinfo where userId in (42485,1)
     </select>
 </mapper>

@@ -7,8 +7,17 @@ package com.demo.bean;
  */
 public class UserInfo {
 
+    private Integer userId;
     private String userName;
     private String openId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getUserName() {
         return userName;
@@ -29,7 +38,8 @@ public class UserInfo {
     @Override
     public String toString() {
         return "UserInfo{" +
-                "userName='" + userName + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
                 ", openId='" + openId + '\'' +
                 '}';
     }

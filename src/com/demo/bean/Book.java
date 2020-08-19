@@ -11,6 +11,7 @@ public class Book {
     private String author;
     private Double price;
     private Integer stock;
+    private String isbn;
 
     public Book(String bookName, String author, Double price, Integer stock) {
         this.bookName = bookName;
@@ -29,6 +30,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
+                ", isbn='" + isbn + '\'' +
                 '}';
     }
 
@@ -62,5 +64,13 @@ public class Book {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }

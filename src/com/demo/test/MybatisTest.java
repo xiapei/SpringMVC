@@ -1,7 +1,9 @@
 package com.demo.test;
 
+import com.demo.bean.Book;
 import com.demo.bean.UserInfo;
 import com.demo.mapper.MybatisMapper;
+import com.demo.mapper.MysqlMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,11 +39,13 @@ public class MybatisTest {
     public void mybatisTest() {
         //try(){}...catch{}括号内的资源可以在执行完语句之后自动关闭
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            MybatisMapper mapper = session.getMapper(MybatisMapper.class);
+//            MybatisMapper mapper = session.getMapper(MybatisMapper.class);
+            MysqlMapper mapper = session.getMapper(MysqlMapper.class);
 //            Map<String,Object> openId = mapper.selectUserInfoById(42485);
 //            List<UserInfo> allUser = mapper.getAllUser();
-            Map<Integer, UserInfo> allUserReturnMap = mapper.getAllUserReturnMap();
-            System.out.println(allUserReturnMap);
+//            Map<Integer, UserInfo> allUserReturnMap = mapper.getAllUserReturnMap();
+            List<Book> allBook = mapper.getAllBook();
+            System.out.println(allBook);
         }
     }
 }

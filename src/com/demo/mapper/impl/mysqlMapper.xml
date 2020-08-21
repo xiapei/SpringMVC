@@ -3,7 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.mapper.MysqlMapper">
-
+<!--    使用二级缓存-->
+<!--    <cache/>-->
+<!--    查询语句属性 useCache：是否使用二级缓存
+        增删改语句属性 flushCache：是否同时清空一级缓存和二级缓存
+-->
     <select id="getAllBook" resultType="com.demo.bean.Book">
         select * from book
     </select>

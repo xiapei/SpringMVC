@@ -1,5 +1,6 @@
 package com.demo.test;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -31,9 +32,9 @@ public class TestController {
      * 进制转换方法
      * 算法思想：Integer.valueOf(字符串, 进制);转化为10进制数，然后用10进制的数除以需要转化的进制，
      * 取余数对应chs的值，reverse之后就是所得结果
-     * @param num       原数据
+     * @param num 原数据
      * @param fromRadix 原进制
-     * @param toRadix   转换的进制
+     * @param toRadix 转换的进制
      * @return 转换后数据
      */
     static String transRadix(String num, int fromRadix, int toRadix) {
@@ -47,12 +48,56 @@ public class TestController {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()) {
-            String num = scanner.next();
-            int fromRadix = scanner.nextInt();
-            int toRadix = scanner.nextInt();
-            System.out.println(transRadix(num,fromRadix,toRadix));
+        System.out.println(reverse(-123));
+//        int[] nums = {2,2,3,5};
+//        int target = 15;
+//        int[] array = twoSum(nums,target);
+//        System.out.println(Arrays.toString(array));
+
+//        Scanner scanner = new Scanner(System.in);
+//        while (scanner.hasNext()) {
+//            String num = scanner.next();
+//            int fromRadix = scanner.nextInt();
+//            int toRadix = scanner.nextInt();
+//            System.out.println(transRadix(num,fromRadix,toRadix));
+//        }
+    }
+
+    /**
+     * int类型数值反转
+     * @param x 输入值
+     * @return 返回反转的值
+     */
+    public static int reverse(int x) {
+        int ans = 0;
+        while (x != 0) {
+            if ((ans * 10) / 10 != ans) {
+                ans = 0;
+                break;
+            }
+            ans = ans * 10 + x % 10;
+            x = x / 10;
         }
+        return ans;
+    }
+
+    /**
+     * 输入一个值和数组，找出数组中相加等于该值的下标并返回
+     * @param nums 给出的数组
+     * @param target 目标值
+     * @return 返回0（未找到）或者下标数组
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        int[] array = new int[2];
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if(nums[i] + nums[j] == target){
+                    array[0] = i;
+                    array[1] = j;
+                    return array;
+                }
+            }
+        }
+        throw  new IllegalArgumentException("没有合适的值");
     }
 }

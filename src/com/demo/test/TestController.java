@@ -48,7 +48,7 @@ public class TestController {
     }
 
     public static void main(String[] args) {
-        System.out.println(reverse(-123));
+        System.out.println(reverse(2147483647));
 //        int[] nums = {2,2,3,5};
 //        int target = 15;
 //        int[] array = twoSum(nums,target);
@@ -71,6 +71,7 @@ public class TestController {
     public static int reverse(int x) {
         int ans = 0;
         while (x != 0) {
+            //ans*10如果大于Integer.MAX_VALUE，那么(ans*10)/10肯定为负数，不等于原ans
             if ((ans * 10) / 10 != ans) {
                 ans = 0;
                 break;
@@ -79,6 +80,22 @@ public class TestController {
             x = x / 10;
         }
         return ans;
+    }
+
+    public static int reverse1(int x) {
+        int newInt = 0;
+        while (x != 0){
+            int ex = x % 10;
+            if (newInt > Integer.MAX_VALUE / 10 || (newInt == Integer.MAX_VALUE / 10 && ex > 7)) {
+                return 0;
+            }
+            if (newInt < Integer.MIN_VALUE / 10 || (newInt == Integer.MIN_VALUE / 10 && ex < -8)) {
+                return 0;
+            }
+            x = x / 10;
+            newInt = ex + newInt * 10;
+        }
+        return newInt;
     }
 
     /**

@@ -47,8 +47,57 @@ public class TestController {
         return sb.reverse().toString();
     }
 
+    /**
+     * 实现二分查找
+     * @param array 数组
+     * @param target 目标值
+     * @return 返回查找到的下标，未找到返回-1
+     */
+    static int search(int[] array, int target){
+        int left = 0;
+        int right = array.length - 1;
+        int mid = (left + right) / 2;
+        while (left <= right){
+            if(array[mid] == target){
+                return mid;
+            }else if(array[mid] > target){
+                right = mid - 1;
+                mid = (left + right)/2;
+            }else if(array[mid] < target){
+                left = mid + 1;
+                mid = (left + right) / 2;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 递归实现二分查找
+     * @param array 数组
+     * @param left 左下标
+     * @param right 右下标
+     * @param target 目标值
+     * @return 返回查找到的下标，未找到返回-1
+     */
+    static int search2(int[] array, int left, int right, int target){
+        if (left <= right) {
+            int mid = (left + right) / 2;
+            if (array[mid] == target) {
+                return mid;
+            }else if (array[mid] > target) {
+                return search2(array, left, mid - 1, target);
+            }else if (array[mid] < target) {
+                return search2(array, mid + 1, right, target);
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(reverse(2147483647));
+        int[] array = {1,3,5,7,9};
+        int target = 9;
+        System.out.println(search2(array,0,array.length-1,target));
+//        System.out.println(reverse(2147483647));
 //        int[] nums = {2,2,3,5};
 //        int target = 15;
 //        int[] array = twoSum(nums,target);
@@ -82,6 +131,11 @@ public class TestController {
         return ans;
     }
 
+    /**
+     * int类型数值反转
+     * @param x 输入值
+     * @return 返回反转的值
+     */
     public static int reverse1(int x) {
         int newInt = 0;
         while (x != 0){
